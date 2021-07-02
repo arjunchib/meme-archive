@@ -1,19 +1,27 @@
 class CommandsController < ApplicationController
+  def show
+    @command = Command.find_by({ name: params[:id] })
+    if @command.nil?
+      render json: { errors: ['404 Not Found'] }, status: :not_found
+    end
+  end
+
   def create
     @meme = Meme.find(params[:meme_id])
     @command = @meme.commands.create(command_params)
-    redirect_to request.referrer
+    redirect_to request.referer
   end
 
   def destroy
     @meme = Meme.find(params[:meme_id])
     @command = @meme.commands.find(params[:id])
     @command.destroy
-    redirect_to request.referrer
+    redirect_to request.referer
   end
 
   private
-    def command_params
-      params.require(:command).permit(:name)
-    end
+
+  def command_params
+    params.require(:command).permit(:name)
+  end
 end
