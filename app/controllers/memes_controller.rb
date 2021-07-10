@@ -4,7 +4,7 @@ require 'json'
 class MemesController < ApplicationController
   include MemesHelper
 
-  before_action :logged_in_user
+  skip_before_action :logged_in_user, only: %i[random]
   before_action :set_meme, only: %i[show edit update destroy]
   before_action :set_embed_url, only: %i[show]
 
@@ -24,6 +24,12 @@ class MemesController < ApplicationController
 
   # GET /memes/1/edit
   def edit; end
+
+  # GET /meme/random
+  def random
+    @meme = Meme.offset(rand(Meme.count)).first
+    render 'show'
+  end
 
   # POST /memes or /memes.json
   def create
@@ -97,9 +103,5 @@ class MemesController < ApplicationController
         commands_attributes: %i[id name _destroy],
         tags_attributes: %i[id name _destroy],
       )
-  end
-
-  def logged_in_user
-    redirect_to new_session_path unless logged_in?
   end
 end

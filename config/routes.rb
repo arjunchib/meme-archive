@@ -5,6 +5,7 @@ Rails
     resources :memes do
       resources :commands, shallow: true
       resources :tags
+      collection { get 'random' }
     end
     resources :sessions
     get '/auth/:provider/callback', to: 'sessions#create'

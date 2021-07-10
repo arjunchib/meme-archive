@@ -1,4 +1,6 @@
 class CommandsController < ApplicationController
+  skip_before_action :logged_in_user, only: %i[show]
+
   def show
     @command = Command.find_by({ name: params[:id] })
     if @command.nil?
