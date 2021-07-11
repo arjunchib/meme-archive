@@ -2,7 +2,8 @@
 lock '~> 3.16.0'
 
 set :application, 'meme-archive'
-set :repo_url, 'https://github.com/fraiser-fan-club/meme-archive.git'
+set :repo_url, 'https://github.com/arjunchib/meme-archive.git'
+set :branch, 'main'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
