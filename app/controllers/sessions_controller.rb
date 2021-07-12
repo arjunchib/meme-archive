@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
   skip_before_action :verify_authenticity_token, only: :create
+  skip_before_action :logged_in_user, only: %i[create new]
 
   def new; end
 
