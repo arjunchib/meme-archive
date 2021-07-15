@@ -2,7 +2,7 @@ class CommandsController < ApplicationController
   skip_before_action :logged_in_user, only: %i[show]
 
   def show
-    @command = Command.find_by({ name: params[:id] })
+    @command = Command.where('lower(name) = ?', params[:id].downcase).first
     if @command.nil?
       render json: { errors: ['404 Not Found'] }, status: :not_found
     end
