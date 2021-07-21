@@ -4,7 +4,7 @@ require 'json'
 class MemesController < ApplicationController
   include MemesHelper
 
-  skip_before_action :logged_in_user, only: %i[random]
+  skip_before_action :logged_in_user, only: %i[random index]
   before_action :set_meme, only: %i[show edit update destroy]
   before_action :set_embed_url, only: %i[show]
 
