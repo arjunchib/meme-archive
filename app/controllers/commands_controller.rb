@@ -1,5 +1,9 @@
 class CommandsController < ApplicationController
-  skip_before_action :logged_in_user, only: %i[show]
+  skip_before_action :logged_in_user, only: %i[show index]
+
+  def index
+    @commands = Command.search(params[:s]).paginate(page: params[:page])
+  end
 
   def show
     @command = Command.where('lower(name) = ?', params[:id].downcase).first

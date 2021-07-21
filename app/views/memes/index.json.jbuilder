@@ -1,1 +1,1 @@
-json.array! @memes, partial: "memes/meme", as: :meme
+json.array! @memes, partial: 'memes/meme', as: :meme
