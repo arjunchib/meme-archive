@@ -4,7 +4,10 @@ Rails
   .draw do
     resources :memes do
       resources :tags
-      collection { get 'random' }
+      collection do
+        get 'all'
+        get 'random'
+      end
     end
     resources :commands
     resources :sessions
