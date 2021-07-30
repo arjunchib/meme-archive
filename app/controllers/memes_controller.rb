@@ -4,7 +4,7 @@ require 'json'
 class MemesController < ApplicationController
   include MemesHelper
 
-  skip_before_action :logged_in_user, only: %i[random, all]
+  skip_before_action :logged_in_user, only: %i[random all]
   before_action :set_meme, only: %i[show edit update destroy]
   before_action :set_embed_url, only: %i[show]
 
@@ -16,6 +16,7 @@ class MemesController < ApplicationController
   # #GET /memes/all.json
   def all
     @memes = Meme.all
+    fresh_when etag: @memes, public: true
   end
 
   # GET /memes/1 or /memes/1.json
