@@ -28,13 +28,16 @@
   display: grid;
   gap: 10px;
   align-items: center;
-  grid: 1fr / auto 1fr auto auto auto;
+  grid: 1fr / auto 1fr auto 22px 22px;
 }
 
 .meme-name {
   flex-grow: 1;
   color: $gray;
   text-decoration: none;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 
   &:visited {
     color: $gray;

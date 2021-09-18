@@ -3,7 +3,7 @@
 body {
   background-color: $white;
   color: #333;
-  margin: 33px;
+  margin: 20px;
 }
 
 body,
@@ -79,4 +79,10 @@ h1 {
 h2 {
   margin: 5px 0;
   font-size: 22px;
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    margin-bottom: 100px;
+  }
 }
