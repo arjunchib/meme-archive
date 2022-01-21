@@ -1,24 +1,50 @@
-# README
+# meme-archive
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Web app to scrape audio from youtube videos and store them in a database. Intended to be consumed by [memebot](https://github.com/arjunchib/memebot).
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+### Install ruby
 
-* System dependencies
+Install ruby version found in the Gemfile.
 
-* Configuration
+### Install node and yarn
 
-* Database creation
+Install yarn 1. I believe any version of node >12 should work, but should always work with the latest version.
 
-* Database initialization
+### Install dependencies
 
-* How to run the test suite
+```bash
+bundle install
+yarn install
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Set env variables
 
-* Deployment instructions
+Add the name of the discord app to the `.env`. This is needed to configure Discord SSO.
 
-* ...
+```
+DISCORD_APP=memetest
+```
+
+### Setup the master key
+
+Add rails master key at `config/master.key`. Contact me for key.
+
+### Setup database
+
+```bash
+bundle exec rails db:setup
+```
+
+### Start the dev server
+
+```bash
+bundle exec rails s
+```
+
+## Deployment
+
+```bash
+cap production deploy
+```
